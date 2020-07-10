@@ -1,23 +1,40 @@
-package java.ObserverPattern.WeatherStation;
+package ObserverPattern.WeatherStation;
 
-import java.util.HashSet;
-import java.util.Observable;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WeatherData implements Subject {
-    private Set<Observer> observers;
+	private List<Observer> observers;
 
-    public WeatherData() {
-        this.observers = new HashSet<>();
-    }
-    @Override
-    public void registerObserver(Observer observer) {
-        this.observers.add(observer);
-    }
+	private float temperature;
+	private float humidity;
+	private float pressure;
 
-    @Override
-    public void removeObserver(Observer observer) {
-        this.observers.remove(observer);
-    }
+	public WeatherData() {
+		this.observers = new ArrayList<>();
+	}
+
+	@Override
+	public void registerObserver(Observer observer) {
+		this.observers.add(observer);
+	}
+
+	@Override
+	public void removeObserver(Observer observer) {
+		this.observers.remove(observer);
+	}
+
+	@Override
+	public void notifyObserver() {
+		for (Observer observer : this.observers)
+			observer.update(this.temperature, this.humidity, this.pressure);
+	}
+
+	public void setMeasurement(float temperature, float humidity,
+			float pressure) {
+		this.temperature = temperature;
+		this.humidity = humidity;
+		this.pressure = pressure;
+	}
 
 }

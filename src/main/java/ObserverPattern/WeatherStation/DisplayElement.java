@@ -1,5 +1,5 @@
-package java.ObserverPattern.WeatherStation;
+package ObserverPattern.WeatherStation;
 
 public interface DisplayElement {
-    public void display();
+	public void display();
 }

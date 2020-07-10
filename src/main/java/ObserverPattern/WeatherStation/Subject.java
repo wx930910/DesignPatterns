@@ -1,6 +1,9 @@
-package java.ObserverPattern.WeatherStation;
+package ObserverPattern.WeatherStation;
 
 public interface Subject {
-    public void registerObserver(Observer o);
-    public void removeObserver(Observer o);
+	public void registerObserver(Observer observer);
+
+	public void removeObserver(Observer observer);
+
+	public void notifyObserver();
 }
